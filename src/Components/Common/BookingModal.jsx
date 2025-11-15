@@ -1,8 +1,23 @@
 import React from 'react';
 import { X, Phone, Calendar, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const BookingModal = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
+
+  const handleOPDClick = (e) => {
+    e.preventDefault();
+    onClose();
+    navigate('/#opd-timing');
+    setTimeout(() => {
+      const element = document.getElementById('opd-timing');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-40 p-4 animate-in fade-in duration-200">

@@ -65,22 +65,22 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a href="#services" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
+              <Link to="/#services" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
                 Services
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#specialties" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
+              <Link to="/#specialties" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
                 Specialties
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#opd-timing" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
+              <Link to="/#opd-timing" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
                 OPD Timing
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="/contact" className="hover:text-primary cursor-pointer transition-colors duration-300 relative group">
@@ -123,31 +123,31 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#services"
+                <Link
+                  to="/#services"
                   onClick={() => setIsMenuOpen(false)}
                   className="hover:text-primary cursor-pointer transition-colors py-2 block"
                 >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#specialties"
+                <Link
+                  to="/#specialties"
                   onClick={() => setIsMenuOpen(false)}
                   className="hover:text-primary cursor-pointer transition-colors py-2 block"
                 >
                   Specialties
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#opd-timing"
+                <Link
+                  to="/#opd-timing"
                   onClick={() => setIsMenuOpen(false)}
                   className="hover:text-primary cursor-pointer transition-colors py-2 block"
                 >
                   OPD Timing
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

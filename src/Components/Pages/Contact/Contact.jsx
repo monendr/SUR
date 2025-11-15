@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle, Heart, Facebook, Instagram, Globe, Quote } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import BookingModal from '../../Common/BookingModal';
@@ -165,7 +166,7 @@ const Contact = () => {
                 <div>
                   <p className="font-bold text-foreground text-lg">Operating Hours</p>
                   <p className="text-muted-foreground mb-2">We're here when you need us</p>
-                  <p className="text-green-600 font-semibold">24/7 Emergency Care<br />OPD: Check Doctor Timings</p>
+                  <p className="text-green-600 font-semibold">24/7 Emergency Care<br />OPD: <Link to="/#opd-timing" className="hover:underline">Check Doctor Timings</Link></p>
                 </div>
               </div>
             </div>

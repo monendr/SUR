@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Phone, MapPin, Clock, Menu, X, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import BookingModal from '../Common/BookingModal';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -90,13 +92,13 @@ const Navbar = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            <a
-              href="#opd-timing"
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
               className="hidden md:flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <Calendar size={18} />
               Book Appointment
-            </a>
+            </button>
             <button
               onClick={toggleMenu}
               className="lg:hidden cursor-pointer hover:text-primary transition-colors p-2"
@@ -157,17 +159,22 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <a
-              href="#opd-timing"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsBookingModalOpen(true);
+              }}
               className="flex items-center justify-center gap-2 w-full mt-6 bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg"
             >
               <Calendar size={18} />
               Book Appointment
-            </a>
+            </button>
           </div>
         )}
       </nav>
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
     </header>
   );
 };

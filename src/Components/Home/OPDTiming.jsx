@@ -1,5 +1,6 @@
 import React from 'react';
 import { Clock, Calendar, Phone, Stethoscope } from 'lucide-react';
+import drSomenImage from '../../assets/DrSomen.jpeg';
 
 const OPDTiming = () => {
   const doctors = [
@@ -73,8 +74,14 @@ const OPDTiming = () => {
         {doctors.map((doctor, index) => (
           <div key={index} className="mb-12 bg-gradient-to-br from-primary/5 to-white rounded-3xl shadow-xl p-8 md:p-10 border border-primary/20">
             <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
-              <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
-                <Stethoscope className="text-primary-foreground w-10 h-10" />
+              <div className="flex-shrink-0">
+                <div className="w-32 h-32 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-lg">
+                  <img
+                    src={drSomenImage}
+                    alt={doctor.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -86,7 +93,7 @@ const OPDTiming = () => {
                   </span>
                 </div>
                 <p className="text-primary font-semibold text-lg mb-1">{doctor.specialty}</p>
-                <p className="text-muted-foreground text-sm">Senior Consultant</p>
+                <p className="text-muted-foreground text-sm">Senior Consultant • 10+ Years Experience</p>
               </div>
             </div>
 

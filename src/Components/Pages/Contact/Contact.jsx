@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle, Heart, Facebook, Instagram, Globe, Quote } from 'lucide-react';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
+import BookingModal from '../../Common/BookingModal';
+import drSomenImage from '../../../assets/DrSomen.jpeg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -98,7 +101,10 @@ const Contact = () => {
             <span className="text-destructive font-bold text-lg">+91 9362655350</span>
           </a>
 
-          <a href="/#opd-timing" className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50">
+          <button
+            onClick={() => setIsBookingModalOpen(true)}
+            className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50 w-full"
+          >
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
               <Calendar className="text-white" size={28} />
             </div>
@@ -106,8 +112,8 @@ const Contact = () => {
               Book Appointment
             </h3>
             <p className="text-muted-foreground mb-4">Schedule your visit</p>
-            <span className="text-primary font-bold text-lg">View OPD Timings</span>
-          </a>
+            <span className="text-primary font-bold text-lg">Click Here</span>
+          </button>
 
           <a href="https://maps.google.com/?q=SUR+Hospital+Khangabok+Thoubal+Manipur" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -385,19 +391,37 @@ const Contact = () => {
           </div>
 
           {/* Doctor Highlight */}
-          <div className="mt-16 bg-gradient-to-br from-primary via-primary to-primary/90 rounded-3xl p-10 md:p-12 text-white shadow-2xl text-center">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{fontFamily: "'Playfair Display', serif"}}>
-              Dr. Laishram Somenkumar Singh
-            </h3>
-            <p className="text-xl text-white/90 mb-2 font-semibold">MD - Obstetrics & Gynecology</p>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Renowned gynecologist and one of the most trusted doctors in Manipur. Known for his compassionate care,
-              exceptional surgical skills, and dedication to women's health. Patients travel from across the state
-              to receive treatment from Dr. Somenkumar at SUR Hospital.
-            </p>
+          <div className="mt-16 bg-gradient-to-br from-primary via-primary to-primary/90 rounded-3xl p-10 md:p-12 text-white shadow-2xl">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-48 h-48 rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
+                  <img
+                    src={drSomenImage}
+                    alt="Dr. Laishram Somenkumar Singh"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{fontFamily: "'Playfair Display', serif"}}>
+                  Dr. Laishram Somenkumar Singh
+                </h3>
+                <p className="text-xl text-white/90 mb-2 font-semibold">MD - Obstetrics & Gynecology</p>
+                <p className="text-lg text-white/90 mb-4">10+ Years Experience • Available: Mon-Sat</p>
+                <p className="text-lg text-white/80 leading-relaxed">
+                  Renowned gynecologist and one of the most trusted doctors in Manipur. Known for his compassionate care,
+                  exceptional surgical skills, and dedication to women's health. Patients travel from across the state
+                  to receive treatment from Dr. Somenkumar at SUR Hospital.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+
       <Footer />
     </>
   );

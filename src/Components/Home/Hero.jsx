@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Calendar, Phone, Heart, Users, Clock, Stethoscope } from 'lucide-react';
 import bannerImage from '../../assets/banner_new.png';
+import BookingModal from '../Common/BookingModal';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentStat, setCurrentStat] = useState(0);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const stats = [
     { icon: Users, number: "10,000+", label: "Patients Served" },
@@ -71,14 +73,14 @@ const Hero = () => {
 
           {/* CTA Buttons with Refined Design */}
           <div className={`mt-10 flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <a
-              href="#opd-timing"
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
               className="group inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary/90 hover:shadow-xl transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               <Calendar className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              View OPD Timings
+              Book Appointment
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
+            </button>
 
             <a
               href="tel:+919362655350"
@@ -136,6 +138,9 @@ const Hero = () => {
           <div className="w-1 h-3 bg-primary rounded-full animate-pulse"></div>
         </div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
     </section>
   );
 };

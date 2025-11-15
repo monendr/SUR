@@ -1,12 +1,13 @@
 import React from 'react';
 import { User, Award, Clock, Phone } from 'lucide-react';
+import drSomenImage from '../../assets/DrSomen.jpeg';
 
 const Doctors = () => {
   const doctors = [
-    { 
-      name: 'Dr. L. SOMENKUMAR SINGH', 
+    {
+      name: 'Dr. L. SOMENKUMAR SINGH',
       dept: 'OBS & GYNAE',
-      image: '/api/placeholder/300/300', // Placeholder for doctor image
+      image: drSomenImage,
       experience: '10+ Years',
       availability: 'Mon-Sat'
     },

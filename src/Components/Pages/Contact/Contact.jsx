@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle, Heart, Facebook, Instagram, Globe } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle, Heart, Facebook, Instagram, Globe, Quote } from 'lucide-react';
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -34,23 +36,52 @@ const Contact = () => {
     }, 2000);
   };
 
+  const reviews = [
+    {
+      name: "Mrs. Sanatombi Devi",
+      rating: 5,
+      review: "Dr. Laishram Somenkumar Singh is the best gynecologist in Manipur! He treated me with utmost care during my pregnancy. His expertise and compassionate approach made my delivery smooth and safe. Highly recommended!",
+      date: "2024"
+    },
+    {
+      name: "Mr. Tomba Singh",
+      rating: 5,
+      review: "We traveled from Imphal to SUR Hospital specifically for Dr. Somenkumar. He is well-known throughout Manipur for his exceptional skills in obstetrics. My wife had a complicated pregnancy, and he handled everything perfectly. Forever grateful!",
+      date: "2024"
+    },
+    {
+      name: "Mrs. Chanu Memcha",
+      rating: 5,
+      review: "Dr. Somenkumar is a gem! His experience and knowledge are unmatched. He explained everything clearly and made us feel comfortable throughout the entire process. SUR Hospital is blessed to have such a skilled doctor.",
+      date: "2024"
+    },
+    {
+      name: "Mrs. Anjali Sharma",
+      rating: 5,
+      review: "Best hospital in Thoubal District! Dr. Laishram Somenkumar Singh is famous for a reason - his dedication to patient care is extraordinary. The hospital staff is also very cooperative and friendly. 5 stars!",
+      date: "2023"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-primary via-primary to-primary/90 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-6 py-3 rounded-full mb-6">
-            <MessageCircle size={20} />
-            <span className="font-semibold tracking-wide">GET IN TOUCH</span>
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <div className="bg-gradient-to-r from-primary via-primary to-primary/90 text-white py-24">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <div className="inline-flex items-center gap-2 bg-white/20 px-6 py-3 rounded-full mb-6">
+              <MessageCircle size={20} />
+              <span className="font-semibold tracking-wide">GET IN TOUCH</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{fontFamily: "'Playfair Display', serif"}}>
+              Contact SUR Hospital
+            </h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              We're here to provide you with exceptional healthcare. Reach out to us for appointments, inquiries, or emergencies.
+            </p>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{fontFamily: "'Playfair Display', serif"}}>
-            Contact SUR Hospital
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            We're here to provide you with exceptional healthcare. Reach out to us for appointments, inquiries, or emergencies.
-          </p>
         </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 py-16 -mt-12 relative z-10">
         
@@ -173,95 +204,110 @@ const Contact = () => {
           </div>
           
           {/* Interactive Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-[#16a34a] mb-8 flex items-center gap-3">
-              <Send className="text-[#22c55e]" size={28} />
+          <div className="bg-white rounded-3xl shadow-xl p-10 border border-border/50">
+            <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              <Send className="text-primary" size={32} />
               Send us a Message
             </h2>
 
             {/* Success Message */}
             {isSubmitted && (
-              <div className="mb-6 p-4 bg-green-100 border border-green-400 rounded-xl flex items-center gap-3 animate-fade-in">
-                <CheckCircle className="text-green-600" size={24} />
+              <div className="mb-6 p-5 bg-green-50 border-2 border-green-500 rounded-2xl flex items-center gap-4 animate-in slide-in-from-top">
+                <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                  <CheckCircle className="text-white" size={24} />
+                </div>
                 <div>
-                  <p className="font-semibold text-green-800">Message Sent Successfully!</p>
-                  <p className="text-green-600 text-sm">We'll get back to you within 24 hours.</p>
+                  <p className="font-bold text-green-900 text-lg">Message Sent Successfully!</p>
+                  <p className="text-green-700">We'll get back to you within 24 hours.</p>
                 </div>
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                  <input 
-                    type="text" 
+                  <label className="block text-sm font-bold text-foreground mb-2">Full Name *</label>
+                  <input
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#22c55e] focus:border-transparent transition-all duration-300 hover:border-[#22c55e]"
-                    placeholder="Enter your full name"
+                    className="w-full px-5 py-3.5 border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:border-primary/50 text-foreground"
+                    placeholder="John Doe"
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formData.email}
+                  <label className="block text-sm font-bold text-foreground mb-2">Phone Number *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#22c55e] focus:border-transparent transition-all duration-300 hover:border-[#22c55e]"
-                    placeholder="your.email@example.com"
+                    className="w-full px-5 py-3.5 border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:border-primary/50 text-foreground"
+                    placeholder="+91 98765 43210"
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
-                <input 
-                  type="text" 
+                <label className="block text-sm font-bold text-foreground mb-2">Email Address *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-5 py-3.5 border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:border-primary/50 text-foreground"
+                  placeholder="john.doe@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-bold text-foreground mb-2">Subject *</label>
+                <input
+                  type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#22c55e] focus:border-transparent transition-all duration-300 hover:border-[#22c55e]"
-                  placeholder="What is this regarding?"
+                  className="w-full px-5 py-3.5 border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:border-primary/50 text-foreground"
+                  placeholder="Appointment inquiry, general question, etc."
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
-                <textarea 
-                  rows="5" 
+                <label className="block text-sm font-bold text-foreground mb-2">Message *</label>
+                <textarea
+                  rows="6"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#22c55e] focus:border-transparent transition-all duration-300 hover:border-[#22c55e] resize-none"
+                  className="w-full px-5 py-3.5 border-2 border-border rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 hover:border-primary/50 resize-none text-foreground"
                   placeholder="Please describe your inquiry in detail..."
                 ></textarea>
               </div>
-              
-              <button 
+
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full flex items-center justify-center gap-3 py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-[#22c55e] to-[#16a34a] hover:shadow-2xl text-white'
+                className={`w-full flex items-center justify-center gap-3 py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${
+                  isSubmitting
+                    ? 'bg-muted cursor-not-allowed text-muted-foreground'
+                    : 'bg-gradient-to-r from-primary to-primary/90 hover:shadow-2xl text-white'
                 }`}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
                     Sending Message...
                   </>
                 ) : (
                   <>
-                    <Send size={20} />
+                    <Send size={22} />
                     Send Message
                   </>
                 )}
@@ -269,29 +315,91 @@ const Contact = () => {
             </form>
 
             {/* Additional Contact Options */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <p className="text-gray-600 text-center mb-4">Prefer to contact us directly?</p>
+            <div className="mt-10 pt-8 border-t border-border">
+              <p className="text-muted-foreground text-center mb-6 font-medium">Or reach us directly:</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+919876543210" 
-                  className="flex items-center justify-center gap-2 bg-red-100 text-red-600 px-6 py-3 rounded-full font-semibold hover:bg-red-500 hover:text-white transition-all duration-300"
+                <a
+                  href="tel:+919362655350"
+                  className="flex items-center justify-center gap-3 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3.5 rounded-xl font-bold hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
-                  <Phone size={18} />
-                  Call Now
+                  <Phone size={20} />
+                  Call: +91 9362655350
                 </a>
-                <a 
-                  href="mailto:info@surhospital.com" 
-                  className="flex items-center justify-center gap-2 bg-blue-100 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
+                <a
+                  href="https://www.facebook.com/sur.hospital.2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3.5 rounded-xl font-bold hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
-                  <Mail size={18} />
-                  Email Us
+                  <Facebook size={20} />
+                  Message on Facebook
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+        {/* Patient Reviews Section */}
+        <div className="max-w-7xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full mb-6 border border-primary/20">
+              <Star size={20} className="fill-current" />
+              <span className="font-semibold tracking-wide">PATIENT REVIEWS</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6" style={{fontFamily: "'Playfair Display', serif"}}>
+              What Our Patients Say
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
+              Dr. Laishram Somenkumar Singh is renowned throughout Manipur for his exceptional expertise in obstetrics and gynecology. Here's what our patients have to say.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {reviews.map((review, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-3xl shadow-xl p-8 border border-border/50 hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="flex items-center gap-2 mb-6">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} className="text-yellow-400 fill-current" size={20} />
+                  ))}
+                </div>
+
+                <Quote className="text-primary/20 mb-4" size={40} />
+
+                <p className="text-foreground leading-relaxed mb-6 text-lg">
+                  "{review.review}"
+                </p>
+
+                <div className="flex items-center justify-between pt-6 border-t border-border">
+                  <div>
+                    <p className="font-bold text-foreground">{review.name}</p>
+                    <p className="text-sm text-muted-foreground">Verified Patient</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{review.date}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Doctor Highlight */}
+          <div className="mt-16 bg-gradient-to-br from-primary via-primary to-primary/90 rounded-3xl p-10 md:p-12 text-white shadow-2xl text-center">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4" style={{fontFamily: "'Playfair Display', serif"}}>
+              Dr. Laishram Somenkumar Singh
+            </h3>
+            <p className="text-xl text-white/90 mb-2 font-semibold">MD - Obstetrics & Gynecology</p>
+            <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+              Renowned gynecologist and one of the most trusted doctors in Manipur. Known for his compassionate care,
+              exceptional surgical skills, and dedication to women's health. Patients travel from across the state
+              to receive treatment from Dr. Somenkumar at SUR Hospital.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

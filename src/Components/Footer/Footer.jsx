@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, Heart } from 'lucide-react';
+import { MapPin, Phone, Clock, Heart, Facebook, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
@@ -24,9 +24,29 @@ const Footer = () => {
             <p className="text-white/80 leading-relaxed mb-6">
               Leading maternity and multi-specialty hospital in Manipur, providing comprehensive healthcare services with compassion and excellence. Rated 4.5/5 stars by our patients.
             </p>
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-2 text-sm mb-6">
               <Heart className="w-4 h-4 fill-current text-primary" />
               <span className="text-white/90 font-medium">Caring for the community since 2015</span>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href="https://www.facebook.com/sur.hospital.2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-xl text-white transition-all duration-300 hover:scale-110"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </a>
+              <a
+                href="https://gynecologistnearme.in/city/thoubal/sur-hospital-khangabok/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-primary rounded-xl text-white transition-all duration-300 hover:scale-110"
+                aria-label="Website Listing"
+              >
+                <Globe size={20} />
+              </a>
             </div>
           </div>
 

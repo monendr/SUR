@@ -1,112 +1,126 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Calendar, Phone, MapPin, Heart, Shield, Clock } from 'lucide-react';
-import bannerImage from '../../assets/banner.jpg';
+import { ArrowRight, Calendar, Phone, Heart, Users, Clock, Stethoscope } from 'lucide-react';
+import bannerImage from '../../assets/banner_new.png';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentStat, setCurrentStat] = useState(0);
 
   const stats = [
-    { icon: Heart, number: "5000+", label: "Happy Patients" },
-    { icon: Shield, number: "5+", label: "Years Experience" },
-    { icon: Clock, number: "24/7", label: "Emergency Care" }
+    { icon: Users, number: "10,000+", label: "Patients Served" },
+    { icon: Stethoscope, number: "5+", label: "Specialties" },
+    { icon: Clock, number: "24/7", label: "Emergency Care" },
+    { icon: Heart, number: "100%", label: "Dedicated Care" }
   ];
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentStat((prev) => (prev + 1) % stats.length);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-[700px] bg-gradient-to-r from-blue-50 to-white overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-[#22c55e]/10 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-32 right-20 w-16 h-16 bg-[#60a5fa]/10 rounded-full animate-bounce"></div>
-        <div className="absolute top-1/2 right-10 w-12 h-12 bg-[#16a34a]/10 rounded-full animate-ping"></div>
+    <section className="relative min-h-[calc(100vh-80px)] bg-gradient-radial overflow-hidden">
+      {/* Organic Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse-slow"></div>
+
+        {/* Medical cross pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, currentColor 50px, currentColor 51px),
+                           repeating-linear-gradient(90deg, transparent, transparent 50px, currentColor 50px, currentColor 51px)`
+        }}></div>
       </div>
 
-      {/* Background Image */}
+      {/* Background Image with Modern Overlay */}
       <div className="absolute inset-0">
-        <img 
-          src={bannerImage} 
-          alt="Medical Professional" 
+        <img
+          src={bannerImage}
+          alt="SUR Hospital - Medical Excellence in Manipur"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60"></div>
       </div>
-      
+
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 py-20 flex items-center min-h-[700px]">
-        <div className="max-w-2xl">
-          {/* Small Tag with Animation */}
+      <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 flex items-center min-h-[calc(100vh-80px)]">
+        <div className="max-w-3xl">
+          {/* Badge with Animation */}
           <div className={`inline-block transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-            <span className="bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-shadow animate-pulse">
-              ✨ Caring For Life
+            <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2.5 rounded-full text-sm font-semibold border border-primary/20 shadow-sm hover:shadow-md transition-all">
+              <Heart className="w-4 h-4 fill-current animate-pulse" />
+              Leading Maternity & Multi-Specialty Hospital in Manipur
             </span>
           </div>
-          
-          {/* Main Heading with Stagger Animation */}
-          <h1 className={`mt-6 text-4xl md:text-6xl font-bold leading-tight transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <span className="text-[#16a34a] hover:text-[#22c55e] transition-colors duration-300">Leading the Way</span><br />
-            <span className="text-[#1e40af] bg-gradient-to-r from-[#1e40af] to-[#60a5fa] bg-clip-text text-transparent animate-pulse">in Medical Excellence</span>
+
+          {/* Main Heading with Elegant Typography */}
+          <h1 className={`mt-8 text-5xl md:text-7xl font-bold leading-tight text-balance transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+              style={{fontFamily: "'Playfair Display', serif"}}>
+            <span className="text-foreground block">Your Health,</span>
+            <span className="text-primary block mt-2">Our Priority</span>
           </h1>
 
-          {/* Subtitle */}
-          <p className={`mt-4 text-lg text-gray-600 max-w-lg transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            Experience world-class healthcare with our dedicated team of professionals. Your health, our commitment.
+          {/* Subtitle with Better Typography */}
+          <p className={`mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            Providing comprehensive healthcare services in Khangabok, Thoubal with expert specialists, modern facilities, and compassionate care for the community of Manipur.
           </p>
-          
-          {/* CTA Buttons with Hover Effects */}
-          <div className={`mt-8 flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <a 
-              href="#services" 
-              className="group inline-flex items-center justify-center bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 shadow-lg"
+
+          {/* CTA Buttons with Refined Design */}
+          <div className={`mt-10 flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <a
+              href="#opd-timing"
+              className="group inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary/90 hover:shadow-xl transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Our Services
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+              <Calendar className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              View OPD Timings
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
-            
-            <a 
-              href="#opd-timing" 
-              className="group inline-flex items-center justify-center bg-white text-[#16a34a] border-2 border-[#22c55e] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#22c55e] hover:text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg"
+
+            <a
+              href="tel:+919362655350"
+              className="group inline-flex items-center justify-center bg-destructive text-destructive-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-destructive/90 hover:shadow-xl transform hover:scale-105 transition-all duration-300 shadow-lg animate-pulse-slow"
             >
-              <Calendar className="mr-2 group-hover:rotate-12 transition-transform duration-300" size={20} />
-              Book Appointment
-            </a>
-            
-            <a 
-              href="tel:+919876543210" 
-              className="group inline-flex items-center justify-center bg-gradient-to-r from-[#60a5fa] to-[#3b82f6] text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 shadow-lg animate-pulse"
-            >
-              <Phone className="mr-2 group-hover:rotate-12 transition-transform duration-300" size={20} />
-              Emergency
+              <Phone className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              Emergency: +91 9362655350
             </a>
           </div>
 
-          {/* Animated Stats */}
-          <div className={`mt-12 transform transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          {/* Animated Stats with Premium Design - Matching Reference */}
+          <div className={`mt-16 transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
+                const isActive = currentStat === index;
                 return (
-                  <div 
+                  <div
                     key={index}
-                    className={`flex items-center gap-3 p-3 sm:p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg transform transition-all duration-500 min-w-[140px] ${
-                      currentStat === index ? 'scale-110 bg-[#22c55e] text-white' : 'hover:scale-105 hover:bg-white'
+                    className={`bg-white rounded-3xl p-6 md:p-8 text-center shadow-lg hover:shadow-2xl transition-all duration-700 border border-border/30 ${
+                      isActive ? 'scale-105 shadow-2xl ring-2 ring-primary/20' : 'hover:scale-105'
                     }`}
+                    style={{
+                      animationDelay: `${index * 100}ms`
+                    }}
                   >
-                    <Icon className={`${currentStat === index ? 'text-white animate-bounce' : 'text-[#22c55e]'}`} size={20} />
-                    <div>
-                      <div className={`font-bold text-base sm:text-lg ${currentStat === index ? 'text-white' : 'text-[#16a34a]'}`}>
-                        {stat.number}
+                    <div className="flex justify-center mb-4">
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                        isActive ? 'bg-primary scale-110' : 'bg-primary/10'
+                      }`}>
+                        <Icon className={`w-8 h-8 transition-all duration-500 ${
+                          isActive ? 'text-white animate-bounce' : 'text-primary'
+                        }`} />
                       </div>
-                      <div className={`text-xs sm:text-sm ${currentStat === index ? 'text-white/90' : 'text-gray-600'}`}>
-                        {stat.label}
-                      </div>
+                    </div>
+                    <div className={`text-3xl md:text-4xl font-bold mb-2 transition-colors duration-500 ${
+                      isActive ? 'text-primary' : 'text-primary'
+                    }`} style={{fontFamily: "'Playfair Display', serif"}}>
+                      {stat.number}
+                    </div>
+                    <div className="text-sm md:text-base font-medium text-muted-foreground">
+                      {stat.label}
                     </div>
                   </div>
                 );
@@ -116,14 +130,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Floating Action Button */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <a 
-          href="/contact"
-          className="group flex items-center justify-center w-16 h-16 bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 animate-bounce"
-        >
-          <MapPin className="group-hover:rotate-12 transition-transform duration-300" size={24} />
-        </a>
+      {/* Subtle Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center p-2">
+          <div className="w-1 h-3 bg-primary rounded-full animate-pulse"></div>
+        </div>
       </div>
     </section>
   );

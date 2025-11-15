@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar, Navigation, Star, CheckCircle, Heart, Facebook, Instagram, Globe } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
@@ -21,141 +22,153 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => setIsSubmitted(false), 3000);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
     }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#16a34a] to-[#22c55e] text-white py-20">
+      <div className="bg-gradient-to-r from-primary via-primary to-primary/90 text-white py-24">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/20 px-6 py-3 rounded-full mb-6">
             <MessageCircle size={20} />
-            <span className="font-semibold">Get In Touch</span>
+            <span className="font-semibold tracking-wide">GET IN TOUCH</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Contact SUR Hospital</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            We're here to help you with all your healthcare needs. Reach out to us anytime.
+          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{fontFamily: "'Playfair Display', serif"}}>
+            Contact SUR Hospital
+          </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            We're here to provide you with exceptional healthcare. Reach out to us for appointments, inquiries, or emergencies.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-16 -mt-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 py-16 -mt-12 relative z-10">
         
         {/* Quick Action Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          <a href="tel:+919876543210" className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4 group-hover:bg-red-500 transition-colors duration-300">
-              <Phone className="text-red-500 group-hover:text-white" size={24} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <a href="tel:+919362655350" className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <Phone className="text-white animate-pulse" size={28} />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Emergency Call</h3>
-            <p className="text-gray-600 mb-4">24/7 Emergency Support</p>
-            <span className="text-red-500 font-semibold">+91 98765 43210</span>
+            <h3 className="text-xl font-bold text-foreground mb-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              Emergency Call
+            </h3>
+            <p className="text-muted-foreground mb-4">24/7 Emergency Support</p>
+            <span className="text-destructive font-bold text-lg">+91 9362655350</span>
           </a>
-          
-          <a href="#opd-timing" className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4 group-hover:bg-blue-500 transition-colors duration-300">
-              <Calendar className="text-blue-500 group-hover:text-white" size={24} />
+
+          <a href="/#opd-timing" className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <Calendar className="text-white" size={28} />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Book Appointment</h3>
-            <p className="text-gray-600 mb-4">Schedule your visit</p>
-            <span className="text-blue-500 font-semibold">View OPD Timings</span>
+            <h3 className="text-xl font-bold text-foreground mb-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              Book Appointment
+            </h3>
+            <p className="text-muted-foreground mb-4">Schedule your visit</p>
+            <span className="text-primary font-bold text-lg">View OPD Timings</span>
           </a>
-          
-          <a href="https://maps.google.com" className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4 group-hover:bg-green-500 transition-colors duration-300">
-              <Navigation className="text-green-500 group-hover:text-white" size={24} />
+
+          <a href="https://maps.google.com/?q=SUR+Hospital+Khangabok+Thoubal+Manipur" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl p-8 text-center transform hover:-translate-y-2 transition-all duration-300 border border-border/50">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <Navigation className="text-white" size={28} />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Get Directions</h3>
-            <p className="text-gray-600 mb-4">Find us on map</p>
-            <span className="text-green-500 font-semibold">Open Maps</span>
+            <h3 className="text-xl font-bold text-foreground mb-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              Get Directions
+            </h3>
+            <p className="text-muted-foreground mb-4">Find us on map</p>
+            <span className="text-green-600 font-bold text-lg">Open Maps</span>
           </a>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-[#16a34a] mb-8 flex items-center gap-3">
-              <MessageCircle className="text-[#22c55e]" size={28} />
+          <div className="bg-white rounded-3xl shadow-xl p-10 border border-border/50">
+            <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              <MessageCircle className="text-primary" size={32} />
               Contact Information
             </h2>
-            
+
             <div className="space-y-6">
-              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center group-hover:bg-red-500 transition-colors duration-300">
-                  <Phone className="text-red-500 group-hover:text-white" size={20} />
+              <div className="group flex items-start gap-4 p-5 rounded-2xl hover:bg-secondary/50 transition-all duration-300 border border-transparent hover:border-primary/20">
+                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="text-white" size={22} />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">Emergency Hotline</p>
-                  <p className="text-gray-600 mb-1">Available 24/7 for urgent care</p>
-                  <a href="tel:+919876543210" className="text-red-500 font-semibold hover:underline">+91 98765 43210</a>
+                  <p className="font-bold text-foreground text-lg">Emergency Hotline</p>
+                  <p className="text-muted-foreground mb-2">Available 24/7 for urgent care</p>
+                  <a href="tel:+919362655350" className="text-destructive font-bold text-lg hover:underline">+91 9362655350</a>
                 </div>
               </div>
-              
-              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300">
-                  <Phone className="text-blue-500 group-hover:text-white" size={20} />
+
+              <div className="group flex items-start gap-4 p-5 rounded-2xl hover:bg-secondary/50 transition-all duration-300 border border-transparent hover:border-primary/20">
+                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="text-white" size={22} />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">General Inquiries</p>
-                  <p className="text-gray-600 mb-1">For appointments and information</p>
-                  <a href="tel:+919876543211" className="text-blue-500 font-semibold hover:underline">+91 98765 43211</a>
+                  <p className="font-bold text-foreground text-lg">Our Location</p>
+                  <p className="text-muted-foreground mb-2">Visit us at our hospital</p>
+                  <p className="text-primary font-semibold">Part I, Shanirou, Khangabok<br />Thoubal District, Manipur - 795138</p>
                 </div>
               </div>
-              
-              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-500 transition-colors duration-300">
-                  <Mail className="text-green-500 group-hover:text-white" size={20} />
+
+              <div className="group flex items-start gap-4 p-5 rounded-2xl hover:bg-secondary/50 transition-all duration-300 border border-transparent hover:border-primary/20">
+                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Clock className="text-white" size={22} />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800">Email Support</p>
-                  <p className="text-gray-600 mb-1">Send us your queries</p>
-                  <a href="mailto:info@surhospital.com" className="text-green-500 font-semibold hover:underline">info@surhospital.com</a>
-                </div>
-              </div>
-              
-              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-500 transition-colors duration-300">
-                  <MapPin className="text-purple-500 group-hover:text-white" size={20} />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-800">Our Location</p>
-                  <p className="text-gray-600 mb-1">Visit us at our hospital</p>
-                  <p className="text-purple-500 font-semibold">Khangabok Awang Leikai<br />Thoubal, Manipur-795138</p>
-                </div>
-              </div>
-              
-              <div className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-                  <Clock className="text-teal-500 group-hover:text-white" size={20} />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-800">Operating Hours</p>
-                  <p className="text-gray-600 mb-1">We're here when you need us</p>
-                  <p className="text-teal-500 font-semibold">24/7 Emergency Care<br />9:00 AM - 8:00 PM General OPD</p>
+                  <p className="font-bold text-foreground text-lg">Operating Hours</p>
+                  <p className="text-muted-foreground mb-2">We're here when you need us</p>
+                  <p className="text-green-600 font-semibold">24/7 Emergency Care<br />OPD: Check Doctor Timings</p>
                 </div>
               </div>
             </div>
 
-            {/* Rating Section */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-[#16a34a] to-[#22c55e] rounded-xl text-white">
-              <div className="flex items-center gap-2 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-yellow-300 fill-current" size={20} />
-                ))}
-                <span className="font-semibold ml-2">4.9/5</span>
+            {/* Social Media Links */}
+            <div className="mt-10 pt-8 border-t border-border">
+              <h3 className="font-bold text-foreground text-lg mb-4">Follow Us</h3>
+              <div className="flex gap-4">
+                <a
+                  href="https://www.facebook.com/sur.hospital.2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl text-white hover:bg-blue-700 hover:scale-110 transition-all duration-300 shadow-lg"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
+                <a
+                  href="https://gynecologistnearme.in/city/thoubal/sur-hospital-khangabok/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 bg-primary rounded-xl text-white hover:bg-primary/90 hover:scale-110 transition-all duration-300 shadow-lg"
+                  aria-label="Website"
+                >
+                  <Globe size={24} />
+                </a>
               </div>
-              <p className="text-white/90">"Excellent healthcare services with compassionate care. Highly recommended!"</p>
-              <p className="text-white/70 text-sm mt-2">- Based on 500+ patient reviews</p>
+            </div>
+
+            {/* Rating Section */}
+            <div className="mt-8 p-6 bg-gradient-to-br from-primary via-primary to-primary/90 rounded-2xl text-white shadow-xl">
+              <div className="flex items-center gap-2 mb-3">
+                {[...Array(4)].map((_, i) => (
+                  <Star key={i} className="text-yellow-300 fill-current" size={22} />
+                ))}
+                <Star className="text-yellow-300 fill-current opacity-50" size={22} />
+                <span className="font-bold ml-2 text-xl">4.5/5</span>
+              </div>
+              <p className="text-white/95 leading-relaxed font-medium">"Best maternity hospital in Thoubal District. Excellent healthcare with compassionate care!"</p>
+              <p className="text-white/70 text-sm mt-3">- Based on verified patient reviews</p>
             </div>
           </div>
           

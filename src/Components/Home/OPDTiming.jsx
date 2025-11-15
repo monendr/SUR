@@ -1,163 +1,138 @@
 import React from 'react';
-import { Clock, User, Calendar, Phone } from 'lucide-react';
+import { Clock, Calendar, Phone, Stethoscope } from 'lucide-react';
 
 const OPDTiming = () => {
   const doctors = [
     {
-      name: "Dr. L. SOMENKUMAR SINGH",
-      specialty: "OBS & GYNAE",
+      name: "Dr. L. Somenkumar Singh",
+      degree: "MD - Gynae",
+      specialty: "Obstetrics & Gynecology",
       schedule: [
-        { day: "TUESDAY", time: "2 PM TO 5PM" },
-        { day: "WEDNESDAY", time: "12 PM TO 5PM" },
-        { day: "SATURDAY", time: "12 PM TO 5PM" }
-      ]
-    },
-    {
-      name: "Dr. L. ZIKPUII",
-      specialty: "OBS & GYNAE",
-      schedule: [
-        { day: "THURSDAY", time: "12PM TO 5PM" },
-        { day: "FRIDAY", time: "12PM TO 3PM" }
-      ]
-    },
-    {
-      name: "Dr. N. MANGANTHOI MEITEI",
-      specialty: "OBS & GYNAE",
-      schedule: [
-        { day: "MONDAY", time: "12PM TO 5PM" },
-        { day: "FRIDAY", time: "12PM TO 5PM" }
-      ]
+        { day: "Tuesday", time: "2:00 PM - 5:00 PM" },
+        { day: "Wednesday", time: "5:00 PM - 12:00 PM" },
+        { day: "Sunday", time: "9:00 AM - 12:00 PM" }
+      ],
+      featured: true
     }
   ];
 
   const specialists = [
     {
-      specialty: "MEDICINE DOCTOR",
+      specialty: "Paediatric Doctor",
+      icon: "👶",
+      availability: "Available",
       schedule: [
-        { day: "TUESDAY", time: "5pm to 7pm" },
-        { day: "THURSDAY", time: "5pm to 7pm" },
-        { day: "FRIDAY", time: "5pm to 7pm" }
+        { day: "Tuesday, Friday", time: "Monday to Saturday" }
       ]
     },
     {
-      specialty: "PAEDIATRIC DOCTOR",
+      specialty: "Dermatologist (Skin Doctor)",
+      icon: "🔬",
+      availability: "Available",
       schedule: [
-        { day: "MONDAY TO FRIDAY", time: "10am to 2pm" }
+        { day: "1st Sunday", time: "10:00 AM - 12:00 PM" },
+        { day: "3rd Sunday", time: "10:00 AM - 12:00 PM" }
       ]
     },
     {
-      specialty: "SURGERY DOCTOR",
+      specialty: "Surgery Doctor",
+      icon: "⚕️",
+      availability: "Available",
       schedule: [
-        { day: "TUESDAY", time: "3pm to 6pm" }
+        { day: "Every Sunday", time: "2:00 PM - 5:00 PM" }
       ]
     },
     {
-      specialty: "ORTHO DOCTOR",
+      specialty: "Ortho and Physio",
+      icon: "🦴",
+      availability: "Available",
       schedule: [
-        { day: "MONDAY to SATURDAY", time: "5pm to 7pm" }
-      ]
-    },
-    {
-      specialty: "ORTHO & PMR DOCTOR",
-      schedule: [
-        { day: "MONDAY to SATURDAY", time: "3pm to 6pm" }
-      ]
-    },
-    {
-      specialty: "ENT DOCTOR-01",
-      schedule: [
-        { day: "SUNDAY", time: "11am to 3pm" }
-      ]
-    },
-    {
-      specialty: "ENT DOCTOR-02 (on call)",
-      schedule: [
-        { day: "MONDAY TO SATURDAY", time: "1pm to 4pm" }
+        { day: "Monday to Saturday", time: "2:00 PM - 3:30 PM" }
       ]
     }
   ];
 
   return (
-    <section id="opd-timing" className="py-16 bg-gray-50">
+    <section id="opd-timing" className="py-20 bg-gradient-to-b from-secondary/30 to-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-[#16a34a] text-white px-6 py-2 rounded-full mb-4">
-            <Clock size={20} />
-            <span className="font-semibold">OPD AVAILABLE</span>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full mb-6 shadow-lg">
+            <Clock size={20} className="animate-pulse" />
+            <span className="font-semibold text-sm tracking-wide">OPD TIMINGS</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#16a34a] mb-4">
-            Doctor Availability & Timing
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4" style={{fontFamily: "'Playfair Display', serif"}}>
+            Doctor Availability Schedule
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Our experienced doctors are available at scheduled times. Please check the timing before your visit.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Our experienced specialists are available at scheduled times. Book your appointment today.
           </p>
         </div>
 
-        {/* Uniform Doctor Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Named Doctors */}
-          {doctors.map((doctor, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 border-l-4 border-[#22c55e] transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
-                  <User className="text-[#16a34a]" size={20} />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-bold text-[#16a34a] text-lg leading-tight">{doctor.name}</h4>
-                  <p className="text-[#22c55e] font-semibold text-sm">{doctor.specialty}</p>
-                </div>
+        {/* Featured Doctor - Larger Card */}
+        {doctors.map((doctor, index) => (
+          <div key={index} className="mb-12 bg-gradient-to-br from-primary/5 to-white rounded-3xl shadow-xl p-8 md:p-10 border border-primary/20">
+            <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+              <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
+                <Stethoscope className="text-primary-foreground w-10 h-10" />
               </div>
-              
-              <div className="space-y-3">
-                {doctor.schedule.map((slot, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Calendar size={14} className="text-[#16a34a]" />
-                        <span className="font-medium text-gray-700 text-sm">{slot.day}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} className="text-[#22c55e]" />
-                        <span className="font-semibold text-[#16a34a] text-sm">{slot.time}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground" style={{fontFamily: "'Playfair Display', serif"}}>
+                    {doctor.name}
+                  </h3>
+                  <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                    {doctor.degree}
+                  </span>
+                </div>
+                <p className="text-primary font-semibold text-lg mb-1">{doctor.specialty}</p>
+                <p className="text-muted-foreground text-sm">Senior Consultant</p>
               </div>
             </div>
-          ))}
-          
-          {/* Specialist Doctors */}
+
+            <div className="grid sm:grid-cols-3 gap-4">
+              {doctor.schedule.map((slot, idx) => (
+                <div key={idx} className="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-border/50">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Calendar className="text-primary w-5 h-5" />
+                    <span className="font-semibold text-foreground">{slot.day}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="text-primary/60 w-4 h-4" />
+                    <span className="text-sm font-medium text-muted-foreground">{slot.time}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* Specialist Doctors Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {specialists.map((specialist, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 border-l-4 border-[#22c55e] transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
-                  <User className="text-[#16a34a]" size={20} />
+            <div key={index} className="medical-card group">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  {specialist.icon}
                 </div>
-                <div className="flex-1">
-                  <h4 className="font-bold text-[#16a34a] text-lg leading-tight">{specialist.specialty}</h4>
-                  {specialist.specialty.includes('on call') && (
-                    <div className="flex items-center gap-1 mt-1">
-                      <Phone size={12} className="text-[#22c55e]" />
-                      <span className="text-xs text-[#22c55e] font-medium">Available on Call</span>
-                    </div>
-                  )}
-                </div>
+                <h4 className="font-bold text-foreground text-lg mb-2 leading-tight">
+                  {specialist.specialty}
+                </h4>
+                <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
+                  {specialist.availability}
+                </span>
               </div>
-              
+
               <div className="space-y-3">
                 {specialist.schedule.map((slot, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Calendar size={14} className="text-[#16a34a]" />
-                        <span className="font-medium text-gray-700 text-sm">{slot.day}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} className="text-[#22c55e]" />
-                        <span className="font-semibold text-[#16a34a] text-sm">{slot.time}</span>
-                      </div>
+                  <div key={idx} className="bg-secondary/50 rounded-xl p-3 text-center">
+                    <div className="flex items-center justify-center gap-2 mb-1">
+                      <Calendar className="text-primary w-4 h-4" />
+                      <span className="font-medium text-foreground text-sm">{slot.day}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Clock className="text-muted-foreground w-4 h-4" />
+                      <span className="text-xs font-medium text-muted-foreground">{slot.time}</span>
                     </div>
                   </div>
                 ))}
@@ -167,13 +142,24 @@ const OPDTiming = () => {
         </div>
 
         {/* Emergency Notice */}
-        <div className="mt-12 bg-gradient-to-r from-[#16a34a] to-[#22c55e] rounded-lg p-6 text-white text-center">
-          <h3 className="text-xl font-bold mb-2">EMERGENCY DOCTORS AVAILABLE 24X7</h3>
-          <p className="text-green-100">For emergency cases, our doctors are available round the clock. Contact us immediately for urgent medical assistance.</p>
-          <div className="mt-4">
-            <a href="tel:+1234567890" className="inline-flex items-center gap-2 bg-white text-[#16a34a] px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
-              <Phone size={18} />
-              Emergency: +91 234 567 8900
+        <div className="mt-16 bg-gradient-to-r from-primary via-primary to-primary/90 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl">
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-4">
+              <Phone className="w-5 h-5 animate-pulse" />
+              <span className="font-semibold text-sm">24/7 Emergency</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{fontFamily: "'Playfair Display', serif"}}>
+              Emergency Services Available Round the Clock
+            </h3>
+            <p className="text-primary-foreground/90 mb-6 text-lg">
+              Our dedicated medical team is available 24/7 for emergencies. Don't hesitate to reach out.
+            </p>
+            <a
+              href="tel:+919362655350"
+              className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-foreground/95 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              <Phone size={22} />
+              <span>Call Now: +91 9362655350</span>
             </a>
           </div>
         </div>
